@@ -1,0 +1,50 @@
+[
+  {
+    "id": "soleras-perdidas",
+    "title": "Soleras Perdidas",
+    "status": "active",
+    "description": "Recreate or rediscover the strawberry soleras dessert.",
+    "checklist": [
+      { "id": "research", "label": "Research original version", "done": false },
+      { "id": "bakeries", "label": "Visit 2 bakeries", "done": false },
+      { "id": "homemade", "label": "Attempt homemade version", "done": false }
+    ],
+    "reward": "The taste of something lost, found again."
+  },
+  {
+    "id": "postredex",
+    "title": "PostreDex",
+    "status": "active",
+    "description": "Build a dessert passport — catalog every sweet discovery.",
+    "checklist": [
+      { "id": "first-entry", "label": "Log first dessert entry", "done": false },
+      { "id": "five-entries", "label": "Reach 5 entries", "done": false },
+      { "id": "photo", "label": "Add a photo to an entry", "done": false }
+    ],
+    "reward": "A map of sweetness."
+  },
+  {
+    "id": "el-verde-suena",
+    "title": "El Verde Suena",
+    "status": "active",
+    "description": "Determine what sound \"green\" makes.",
+    "checklist": [
+      { "id": "listen", "label": "Listen to all 6 sound options", "done": false },
+      { "id": "vote", "label": "Cast your vote", "done": false },
+      { "id": "save", "label": "Save chosen Green Sound", "done": false }
+    ],
+    "reward": "The frequency of a color."
+  },
+  {
+    "id": "midnight-watch",
+    "title": "Midnight Watch",
+    "status": "locked",
+    "description": "See Midnight Generation every time they come to Guadalajara.",
+    "checklist": [
+      { "id": "monitor", "label": "Monitor upcoming events", "done": false },
+      { "id": "tickets", "label": "Buy tickets", "done": false },
+      { "id": "memory", "label": "Post-concert memory entry", "done": false }
+    ],
+    "reward": "A night you'll never forget."
+  }
+]
