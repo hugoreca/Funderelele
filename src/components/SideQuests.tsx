@@ -28,7 +28,7 @@ const SideQuests = () => {
   const [expandedQuest, setExpandedQuest] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch('/data/quests.json')
+    fetch(`${import.meta.env.BASE_URL}data/quests.json`)
       .then(r => r.json())
       .then((data: Quest[]) => setQuests(data));
   }, []);

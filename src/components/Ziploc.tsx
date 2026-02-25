@@ -15,7 +15,7 @@ const Ziploc = () => {
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
-    fetch('/data/memories.json')
+    fetch(`${import.meta.env.BASE_URL}data/memories.json`)
       .then(r => r.json())
       .then((data: Memory[]) => {
         setMemories(data);

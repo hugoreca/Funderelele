@@ -25,7 +25,7 @@ const Canciones = () => {
   const [favorites, setFavorites] = useLocalStorage<string[]>('favorite-songs', []);
 
   useEffect(() => {
-    fetch('/data/songs.json')
+    fetch(`${import.meta.env.BASE_URL}data/songs.json`)
       .then(r => r.json())
       .then(setSongs);
   }, []);
