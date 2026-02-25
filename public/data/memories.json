@@ -1,0 +1,12 @@
+[
+  { "id": "1", "text": "That time we got lost looking for churros at 2am.", "tags": ["adventure", "food", "night"] },
+  { "id": "2", "text": "When you explained the entire plot of a movie in the wrong order and it was somehow better.", "tags": ["funny", "movies"] },
+  { "id": "3", "text": "The sunset that looked like a painting we didn't deserve.", "tags": ["nature", "quiet"] },
+  { "id": "4", "text": "Dancing in the kitchen to a song neither of us knew the words to.", "tags": ["music", "joy"] },
+  { "id": "5", "text": "The first time the coffee was actually perfect.", "tags": ["food", "morning"] },
+  { "id": "6", "text": "Laughing so hard we forgot what was funny.", "tags": ["funny", "joy"] },
+  { "id": "7", "text": "That rainy afternoon where nothing happened and everything mattered.", "tags": ["quiet", "rain"] },
+  { "id": "8", "text": "Building something together just because we could.", "tags": ["adventure", "creation"] },
+  { "id": "9", "text": "The song that played at exactly the right moment.", "tags": ["music", "magic"] },
+  { "id": "10", "text": "Sharing a dessert that was too beautiful to eat — but we did anyway.", "tags": ["food", "joy"] }
+]

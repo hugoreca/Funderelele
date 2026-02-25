@@ -1,0 +1,27 @@
+{
+  "felices": [
+    { "title": "Mr. Brightside", "artist": "The Killers", "link": "https://open.spotify.com/track/003vvx7Niy0yvhvHt4a68B", "note": "The anthem that never gets old." },
+    { "title": "Dancing Queen", "artist": "ABBA", "link": "https://open.spotify.com/track/0GjEhVFGZW8afUYGChu3Rr", "note": "Seventeen and infinite." },
+    { "title": "Here Comes the Sun", "artist": "The Beatles", "link": "https://open.spotify.com/track/6dGnYIeXmHdcikdzNNDMm2", "note": "It's alright." }
+  ],
+  "calmadas": [
+    { "title": "Skinny Love", "artist": "Bon Iver", "link": "https://open.spotify.com/track/3rvMaEJaBJCxJv2ZjPMbL6", "note": "Paper-thin and weightless." },
+    { "title": "Holocene", "artist": "Bon Iver", "link": "https://open.spotify.com/track/3TGRqJbzMt2WnMXrVpGEBC", "note": "And at once I knew, I was not magnificent." },
+    { "title": "Re: Stacks", "artist": "Bon Iver", "link": "https://open.spotify.com/track/2xOiMjgBMOSnxtsbFmAfAB", "note": "Everything that happens is from now on." }
+  ],
+  "etéreas": [
+    { "title": "Gris, Pt. 1", "artist": "Berlinist", "link": "https://open.spotify.com/track/4fcHTb3k1TXn8cN6dNROj3", "note": "Where color returns." },
+    { "title": "Intro", "artist": "The xx", "link": "https://open.spotify.com/track/2usYwEljVnPlp2cM8oNSuS", "note": "The space between notes." },
+    { "title": "An Ending (Ascent)", "artist": "Brian Eno", "link": "https://open.spotify.com/track/2YpKOLBM0r46mRSaE3Iayh", "note": "Floating upward." }
+  ],
+  "cursis": [
+    { "title": "Lucky", "artist": "Jason Mraz & Colbie Caillat", "link": "https://open.spotify.com/track/3s0JxzHaFGsJOU8ZxNXQde", "note": "I'm lucky I'm in love with my best friend." },
+    { "title": "La Vie en Rose", "artist": "Edith Piaf", "link": "https://open.spotify.com/track/71fG3mW3FLX26QCrUJX41p", "note": "The world through rose-tinted sound." },
+    { "title": "Can't Help Falling in Love", "artist": "Elvis Presley", "link": "https://open.spotify.com/track/44AyOl4qVkzS48vBsbNXaC", "note": "Some things are meant to be." }
+  ],
+  "nocturnas": [
+    { "title": "Midnight City", "artist": "M83", "link": "https://open.spotify.com/track/6GyFP1nfCDB8lbD2bG0Hq9", "note": "Neon against the dark." },
+    { "title": "Nightcall", "artist": "Kavinsky", "link": "https://open.spotify.com/track/0U0ldCRmgCqhVvD6ksG63j", "note": "I'm giving you a nightcall." },
+    { "title": "After Dark", "artist": "Mr.Kitty", "link": "https://open.spotify.com/track/2LKOHdMsL0K9KwcPRlJK2v", "note": "I see you in the dark." }
+  ]
+}
