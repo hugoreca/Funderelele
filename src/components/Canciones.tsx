@@ -8,20 +8,20 @@ interface Song {
   note: string;
 }
 
-type Mood = 'felices' | 'calmadas' | 'etéreas' | 'cursis' | 'nocturnas';
-const moods: Mood[] = ['felices', 'calmadas', 'etéreas', 'cursis', 'nocturnas'];
+type Mood = 'cursis' | 'euforia' | 'calmadas' | 'mágicas' | 'oníricas';
+const moods: Mood[] = ['cursis', 'euforia', 'calmadas', 'mágicas', 'oníricas'];
 
 const moodEmoji: Record<Mood, string> = {
-  felices: '☀️',
-  calmadas: '🌊',
-  'etéreas': '✧',
   cursis: '♡',
-  nocturnas: '🌙',
+  euforia: '☀️',
+  calmadas: '🌊',
+  'mágicas': '✧',
+  'oníricas': '🌙',
 };
 
 const Canciones = () => {
   const [songs, setSongs] = useState<Record<Mood, Song[]>>({} as any);
-  const [activeMood, setActiveMood] = useState<Mood>('etéreas');
+  const [activeMood, setActiveMood] = useState<Mood>('cursis');
   const [favorites, setFavorites] = useLocalStorage<string[]>('favorite-songs', []);
 
   useEffect(() => {
