@@ -39,6 +39,7 @@
     "id": "quesos-digitales",
     "title": "Quesos Digitales",
     "status": "active",
+    "rarity": "legendary",
     "description": "Confirm or deny the existence of digital cheeses.",
     "checklist": [
       { "id": "investigate", "label": "Investigate powdered cheese bases", "done": false },
@@ -47,6 +48,20 @@
       { "id": "conclusion", "label": "Reach an existential conclusion", "done": false }
     ],
     "reward": "Unlock: 🧀 The Quantum Cow Achievement."
+  },
+  {
+    "id": "tiramisu-zmg",
+    "title": "Tiramisú Protocol ZMG",
+    "status": "active",
+    "rarity": "legendary",
+    "description": "Create the official tier list of tiramisús in the Zona Metropolitana de Guadalajara.",
+    "checklist": [
+      { "id": "identify", "label": "Identify at least 5 tiramisu locations in ZMG", "done": false },
+      { "id": "taste", "label": "Taste and document each one", "done": false },
+      { "id": "criteria", "label": "Define official judging criteria (creaminess, coffee intensity, cocoa dust ratio)", "done": false },
+      { "id": "rank", "label": "Publish the Official ZMG Tiramisu Tier List", "done": false }
+    ],
+    "reward": "Achievement Unlocked: ☕🍰 S-Tier Sweetness."
   },
   {
     "id": "midnight-watch",
