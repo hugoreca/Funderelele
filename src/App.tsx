@@ -26,24 +26,48 @@ const BgmToggle = () => {
       const a = new Audio(`${import.meta.env.BASE_URL}audio/bgm.mp3`);
       a.loop = true;
       a.preload = "auto";
+      a.volume = 1;
+      a.addEventListener("error", () => {
+        // eslint-disable-next-line no-console
+        console.error("BGM load/play error", a.error);
+      });
       audioRef.current = a;
     }
-    const a = audioRef.current!;
-    if (enabled) {
-      a.play().catch(() => {});
+  }, []);
+
+  const ensureAudio = () => {
+    if (!audioRef.current) {
+      const a = new Audio(`${import.meta.env.BASE_URL}audio/bgm.mp3`);
+      a.loop = true;
+      a.preload = "auto";
+      a.volume = 1;
+      audioRef.current = a;
+    }
+    return audioRef.current!;
+  };
+
+  const onToggle = (next: boolean) => {
+    const a = ensureAudio();
+    if (next) {
+      a.muted = false;
+      a.play().catch((e) => {
+        // eslint-disable-next-line no-console
+        console.warn("BGM play blocked", e);
+      });
     } else {
       a.pause();
       a.currentTime = 0;
     }
+    setEnabled(next);
     try {
-      localStorage.setItem("bgm-enabled", JSON.stringify(enabled));
+      localStorage.setItem("bgm-enabled", JSON.stringify(next));
     } catch {}
-  }, [enabled]);
+  };
 
   return (
     <div className="fixed top-4 right-4 z-50 flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-2 backdrop-blur">
       <span className="text-xs tracking-wider">BGM</span>
-      <Switch checked={enabled} onCheckedChange={setEnabled} />
+      <Switch checked={enabled} onCheckedChange={onToggle} />
     </div>
   );
 };
