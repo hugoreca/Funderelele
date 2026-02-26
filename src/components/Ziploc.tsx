@@ -53,6 +53,10 @@ const Ziploc = () => {
       prev.includes(current.id) ? prev.filter(id => id !== current.id) : [...prev, current.id]
     );
   };
+  const toggleSaveById = (id: string) => {
+    setSaved(prev => (prev.includes(id) ? prev.filter(x => x !== id) : [...prev, id]));
+  };
+  const isSaved = (id: string) => saved.includes(id);
 
   return (
     <section id="ziploc" className="min-h-screen py-20 px-4 md:px-8 relative z-10">
@@ -106,7 +110,6 @@ const Ziploc = () => {
           </button>
         </div>
 
-        {/* Tag filter */}
         <div className="flex flex-wrap justify-center gap-2">
           <button
             type="button"
@@ -130,6 +133,54 @@ const Ziploc = () => {
             >
               {tag}
             </button>
+          ))}
+        </div>
+
+        <div className="mt-8 grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {filtered.map((m) => (
+            <div
+              key={m.id}
+              className={`inventory-slot p-4 group cursor-pointer ${current?.id === m.id ? 'border-accent/40' : ''}`}
+              onClick={() => setCurrent(m)}
+            >
+              <div className="flex items-start gap-3">
+                <div className="flex-1 min-w-0">
+                  <p
+                    className="text-foreground/70 text-sm"
+                    style={{
+                      display: '-webkit-box',
+                      WebkitLineClamp: 3,
+                      WebkitBoxOrient: 'vertical',
+                      overflow: 'hidden',
+                    }}
+                    title={m.text}
+                  >
+                    “{m.text}”
+                  </p>
+                  <div className="flex flex-wrap gap-1 mt-2">
+                    {m.tags.map((t) => (
+                      <span key={t} className="text-foreground/20 text-[10px] tracking-wider uppercase">
+                        #{t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    toggleSaveById(m.id);
+                  }}
+                  className={`text-lg transition-colors duration-200 ${
+                    isSaved(m.id) ? 'text-accent' : 'text-foreground/15 hover:text-foreground/40'
+                  }`}
+                  aria-pressed={isSaved(m.id)}
+                  aria-label={isSaved(m.id) ? 'Quitar de favoritos' : 'Agregar a favoritos'}
+                >
+                  {isSaved(m.id) ? '★' : '☆'}
+                </button>
+              </div>
+            </div>
           ))}
         </div>
       </div>
