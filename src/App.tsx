@@ -29,6 +29,11 @@ const SfxClicks = () => {
       last = idx;
       const pick = files[idx];
       const src = `${import.meta.env.BASE_URL}audio/${encodeURIComponent(pick)}`;
+      // log del sfx seleccionado
+      try {
+        // eslint-disable-next-line no-console
+        console.log(`[SFX] ${pick}`);
+      } catch {}
       const a = new Audio(src);
       a.volume = 0.5;
       a.play().catch(() => {});
