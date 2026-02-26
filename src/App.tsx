@@ -10,6 +10,31 @@ import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
 
+const SfxClicks = () => {
+  useEffect(() => {
+    const files = [
+      "Minecraft Villager (Huh) - Sound Effect (HD).mp3",
+      "Minecraft Villager (Huh) #2 - Sound Effect (HD).mp3",
+      "Minecraft Villager (Huh) #3 - Sound Effect (HD).mp3",
+    ];
+    const handler = (ev: MouseEvent) => {
+      const t = ev.target as Element | null;
+      if (!t) return;
+      if (t.closest('[data-no-sfx="true"]')) return;
+      const pick = files[Math.floor(Math.random() * files.length)];
+      const src = `${import.meta.env.BASE_URL}audio/${encodeURIComponent(pick)}`;
+      const a = new Audio(src);
+      a.volume = 0.45;
+      a.play().catch(() => {});
+    };
+    document.addEventListener("click", handler);
+    return () => {
+      document.removeEventListener("click", handler);
+    };
+  }, []);
+  return null;
+};
+
 const BgmToggle = () => {
   const [enabled, setEnabled] = useState<boolean>(() => {
     try {
@@ -65,9 +90,12 @@ const BgmToggle = () => {
   };
 
   return (
-    <div className="fixed top-4 right-4 z-50 flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-2 backdrop-blur">
+    <div
+      className="fixed top-4 right-4 z-50 flex items-center gap-2 rounded-full border border-border bg-background/60 px-3 py-2 backdrop-blur"
+      data-no-sfx="true"
+    >
       <span className="text-xs tracking-wider">BGM</span>
-      <Switch checked={enabled} onCheckedChange={onToggle} />
+      <Switch checked={enabled} onCheckedChange={onToggle} data-no-sfx="true" />
     </div>
   );
 };
@@ -77,6 +105,7 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
+      <SfxClicks />
       <BgmToggle />
       <BrowserRouter basename={import.meta.env.BASE_URL}>
         <Routes>
