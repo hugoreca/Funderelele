@@ -36,6 +36,19 @@
     "reward": "The frequency of a color."
   },
   {
+    "id": "quesos-digitales",
+    "title": "Quesos Digitales",
+    "status": "active",
+    "description": "Confirm or deny the existence of digital cheeses.",
+    "checklist": [
+      { "id": "investigate", "label": "Investigate powdered cheese bases", "done": false },
+      { "id": "theory", "label": "Draft the Digital Cheese Theory", "done": false },
+      { "id": "debate", "label": "Hold a formal debate (with snacks)", "done": false },
+      { "id": "conclusion", "label": "Reach an existential conclusion", "done": false }
+    ],
+    "reward": "Unlock: 🧀 The Quantum Cow Achievement."
+  },
+  {
     "id": "midnight-watch",
     "title": "Midnight Watch",
     "status": "locked",
