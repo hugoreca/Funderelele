@@ -17,19 +17,25 @@ const SfxClicks = () => {
       "Minecraft Villager (Huh) #2 - Sound Effect (HD).mp3",
       "Minecraft Villager (Huh) #3 - Sound Effect (HD).mp3",
     ];
+    let last = -1;
     const handler = (ev: MouseEvent) => {
       const t = ev.target as Element | null;
       if (!t) return;
       if (t.closest('[data-no-sfx="true"]')) return;
-      const pick = files[Math.floor(Math.random() * files.length)];
+      let idx = Math.floor(Math.random() * files.length);
+      if (files.length > 1 && idx === last) {
+        idx = (idx + 1) % files.length;
+      }
+      last = idx;
+      const pick = files[idx];
       const src = `${import.meta.env.BASE_URL}audio/${encodeURIComponent(pick)}`;
       const a = new Audio(src);
-      a.volume = 0.45;
+      a.volume = 0.5;
       a.play().catch(() => {});
     };
-    document.addEventListener("click", handler);
+    document.addEventListener("click", handler, { capture: true });
     return () => {
-      document.removeEventListener("click", handler);
+      document.removeEventListener("click", handler, { capture: true } as any);
     };
   }, []);
   return null;
