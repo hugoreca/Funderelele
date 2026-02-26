@@ -11,7 +11,7 @@ const Ziploc = () => {
   const [memories, setMemories] = useState<Memory[]>([]);
   const [current, setCurrent] = useState<Memory | null>(null);
   const [saved, setSaved] = useLocalStorage<string[]>('saved-memories', []);
-  const [activeTag, setActiveTag] = useState<string | null>(null);
+  const [activeTag, setActiveTag] = useState<'all' | string>('all');
   const [copied, setCopied] = useState(false);
 
   useEffect(() => {
@@ -24,7 +24,14 @@ const Ziploc = () => {
   }, []);
 
   const allTags = [...new Set(memories.flatMap(m => m.tags))];
-  const filtered = activeTag ? memories.filter(m => m.tags.includes(activeTag)) : memories;
+  const filtered = activeTag === 'all' ? memories : memories.filter(m => m.tags.includes(activeTag));
+
+  useEffect(() => {
+    if (memories.length === 0) return;
+    const pool = filtered.length > 0 ? filtered : memories;
+    setCurrent(pool[Math.floor(Math.random() * pool.length)]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [activeTag, memories]);
 
   const shuffle = useCallback(() => {
     const pool = filtered.length > 0 ? filtered : memories;
@@ -102,20 +109,24 @@ const Ziploc = () => {
         {/* Tag filter */}
         <div className="flex flex-wrap justify-center gap-2">
           <button
-            onClick={() => setActiveTag(null)}
-            className={`text-[10px] tracking-wider uppercase px-3 py-1 rounded-full transition-all duration-300 ${
-              activeTag === null ? 'text-foreground/60 border border-foreground/20' : 'text-foreground/20 hover:text-foreground/40'
+            type="button"
+            onClick={() => setActiveTag('all')}
+            className={`text-[10px] tracking-wider uppercase px-3 py-1 rounded-full transition-colors duration-200 ${
+              activeTag === 'all' ? 'text-foreground/60 border border-foreground/20' : 'text-foreground/20 hover:text-foreground/40'
             }`}
+            aria-pressed={activeTag === 'all'}
           >
-            all
+            todas
           </button>
           {allTags.map(tag => (
             <button
               key={tag}
-              onClick={() => setActiveTag(tag === activeTag ? null : tag)}
-              className={`text-[10px] tracking-wider uppercase px-3 py-1 rounded-full transition-all duration-300 ${
+              type="button"
+              onClick={() => setActiveTag(tag)}
+              className={`text-[10px] tracking-wider uppercase px-3 py-1 rounded-full transition-colors duration-200 ${
                 activeTag === tag ? 'text-foreground/60 border border-foreground/20' : 'text-foreground/20 hover:text-foreground/40'
               }`}
+              aria-pressed={activeTag === tag}
             >
               {tag}
             </button>
