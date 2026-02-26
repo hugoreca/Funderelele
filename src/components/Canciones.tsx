@@ -10,6 +10,7 @@ interface Song {
 
 type Mood = 'cursis' | 'euforia' | 'calmadas' | 'mágicas' | 'oníricas';
 const moods: Mood[] = ['cursis', 'euforia', 'calmadas', 'mágicas', 'oníricas'];
+type MoodFilter = 'all' | Mood;
 
 const moodEmoji: Record<Mood, string> = {
   cursis: '♡',
@@ -21,7 +22,7 @@ const moodEmoji: Record<Mood, string> = {
 
 const Canciones = () => {
   const [songs, setSongs] = useState<Record<Mood, Song[]>>({} as any);
-  const [activeMood, setActiveMood] = useState<Mood>('cursis');
+  const [activeMood, setActiveMood] = useState<MoodFilter>('all');
   const [favorites, setFavorites] = useLocalStorage<string[]>('favorite-songs', []);
 
   useEffect(() => {
@@ -30,7 +31,10 @@ const Canciones = () => {
       .then(setSongs);
   }, []);
 
-  const currentSongs = songs[activeMood] || [];
+  const flattened = Object.entries(songs).flatMap(([m, arr]) =>
+    (arr as Song[]).map(s => ({ ...s, mood: m as Mood }))
+  );
+  const currentSongs = activeMood === 'all' ? flattened : flattened.filter(s => s.mood === activeMood);
 
   const toggleFavorite = (title: string) => {
     setFavorites(prev =>
@@ -39,7 +43,7 @@ const Canciones = () => {
   };
 
   const randomSong = () => {
-    const allSongs = Object.values(songs).flat();
+    const allSongs = currentSongs;
     if (allSongs.length === 0) return;
     const song = allSongs[Math.floor(Math.random() * allSongs.length)];
     window.open(song.link, '_blank');
@@ -52,9 +56,8 @@ const Canciones = () => {
           CANCIONES
         </h2>
 
-        {/* Mood tabs */}
         <div className="flex flex-wrap justify-center gap-2 mb-10">
-          {moods.map(mood => (
+          {(['all', ...moods] as MoodFilter[]).map(mood => (
             <button
               key={mood}
               onClick={() => setActiveMood(mood)}
@@ -64,12 +67,11 @@ const Canciones = () => {
                   : 'text-foreground/40 border border-transparent hover:text-foreground/70'
                 }`}
             >
-              {moodEmoji[mood]} {mood}
+              {mood === 'all' ? 'todas' : `${moodEmoji[mood]} ${mood}`}
             </button>
           ))}
         </div>
 
-        {/* Random button */}
         <div className="text-center mb-8">
           <button
             onClick={randomSong}
@@ -79,9 +81,8 @@ const Canciones = () => {
           </button>
         </div>
 
-        {/* Song list */}
-        <div className="space-y-3">
-          {currentSongs.map(song => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          {currentSongs.map((song) => (
             <div
               key={song.title}
               className="inventory-slot p-4 flex items-center justify-between group"
